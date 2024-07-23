@@ -1,38 +1,21 @@
 import mongoose from "mongoose";
 
-const blogSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  description: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  tags: {
-    type: [String],
-    default: [],
-  },
-  fileUpload: {
-    type: String,
-    required: true,
-  },
+const blogSchema = mongoose.Schema({
+  title: String,
+  description: String,
+  tags: [String],
+  fileUpload: String,
   upvote: {
     type: Number,
     default: 0,
   },
-  creator: {
-    type: String,
-    required: true,
-  },
+  creator: String,
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: new Date(),
   },
 });
 
-const BlogPost = mongoose.model("BlogArticle", blogSchema);
+var BlogPost = mongoose.model("BlogArticle", blogSchema);
 
 export default BlogPost;
